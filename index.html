@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Glass - Neural Interface Design</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="templatemo-neural-style.css" rel="stylesheet">
+
+<style>
+/* ===== ICON ANIMASI ===== */
+.menu-icon {
+    font-size: 28px;
+    display: inline-block;
+    margin-bottom: 6px;
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+.hero-stat-link:hover .menu-icon {
+    transform: rotate(12deg) scale(1.15);
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+}
+.hero-stat-link:hover {
+    transform: translateY(-6px);
+    transition: transform 0.4s ease;
+}
+
+/* ===== LOADING SCREEN ===== */
+#loading {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    display:flex; justify-content:center; align-items:center; flex-direction:column;
+    z-index:9999;
+    font-family:'Inter', sans-serif;
+    color:#fff;
+}
+#loading .neural-background,
+#loading .geometric-shapes,
+#loading .neural-lines {
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    z-index:-1;
+}
+#loading .spinner {
+    border:6px solid rgba(255,255,255,0.2);
+    border-top:6px solid #fff;
+    border-radius:50%;
+    width:60px;
+    height:60px;
+    animation:spin 1s linear infinite;
+    margin-bottom:15px;
+}
+#loading p { font-size:18px; opacity:0.8; }
+@keyframes spin { 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);} }
+
+/* ===== HERO MENU ===== */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+.hero-stat {
+    background: rgba(255,255,255,0.08);
+    padding: 18px 22px;
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align:center;
+    min-width:140px;
+    flex: 1 1 180px;
+}
+.hero-stat:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(126,90,255,0.6),0 0 20px rgba(255,99,196,0.6);
+}
+.menu-icon { display:block; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+    .hero-stats { justify-content:center; gap:16px; }
+    .hero-stat { min-width:120px; }
+}
+
+/* ===== DARK/LIGHT MODE ===== */
+body.light-mode { background:#f5f5f5; color:#222; }
+body:not(.light-mode) { background-color: rgba(11,12,23,1); color:#fff; }
+body:not(.light-mode) .flip-card-front { background: rgba(126,90,255,0.6); }
+body:not(.light-mode) .flip-card-back { background: rgba(255,99,196,0.6); }
+.modal-content { background-color: rgba(27,28,42,0.95); }
+
+/* ===== TAMBAHAN : HERO IMAGE ATAS ===== */
+.hero-top-image{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
+.hero-top-image img{
+    width:100%;
+    max-width:260px;
+    animation: float 4s ease-in-out infinite;
+}
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+    <div class="neural-background"></div>
+    <div class="geometric-shapes">
+        <div class="shape"></div><div class="shape"></div><div class="shape"></div><div class="shape"></div>
+    </div>
+    <div class="neural-lines">
+        <div class="neural-line"></div><div class="neural-line"></div><div class="neural-line"></div>
+    </div>
+    <div class="spinner"></div>
+    <p>Initializing Neural Link...</p>
+</div>
+
+<!-- BACKGROUND -->
+<div class="neural-background"></div>
+<div class="geometric-shapes">
+    <div class="shape"></div><div class="shape"></div><div class="shape"></div><div class="shape"></div>
+</div>
+<div class="neural-lines">
+    <div class="neural-line"></div><div class="neural-line"></div><div class="neural-line"></div>
+</div>
+
+<!-- HEADER -->
+<header class="glass">
+    <nav>
+        <a href="#home" class="logo">HALOOO</a>
+        <ul class="nav-links">
+            <li><a href="#features">Neural</a></li>
+            <li><a href="#showcase">Matrix</a></li>
+            <li><a href="#timeline">Evolution</a></li>
+            <li><a href="#contact">Connect</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+
+        <!-- GAMBAR DI ATAS SELAMAT DATANG (TAMBAHAN SAJA) -->
+        <div class="hero-top-image">
+            <img src="hero-image.png" alt="Hero Image">
+        </div>
+
+        <div class="hero-subtitle">SELAMAT DATANG</div>
+        <h1></h1>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <a href="tugas.html" class="hero-stat-link">
+                    <span class="menu-icon">📂</span>
+                    <span class="hero-stat-number">TUGAS</span>
+                    <span class="hero-stat-label">Pengumpulan</span>
+                </a>
+            </div>
+            <div class="hero-stat">
+                <a href="evaluasi.html" class="hero-stat-link">
+                    <span class="menu-icon">📊</span>
+                    <span class="hero-stat-number">EVALUASI & TARGET</span>
+                    <span class="hero-stat-label">Refleksi</span>
+                </a>
+            </div>
+            <div class="hero-stat">
+                <a href="motivasi.html" class="hero-stat-link">
+                    <span class="menu-icon">💡</span>
+                    <span class="hero-stat-number">MOTIVASI</span>
+                    <span class="hero-stat-label">Positive Mindset</span>
+                </a>
+            </div>
+            <div class="hero-stat">
+                <a href="identitas.html" class="hero-stat-link">
+                    <span class="menu-icon">🧬</span>
+                    <span class="hero-stat-number">IDENTITAS</span>
+                    <span class="hero-stat-label">Diriku</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Glass - Neural Interface Design</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="templatemo-neural-style.css" rel="stylesheet">
+
+<style>
+/* ===== ICON ANIMASI ===== */
+.menu-icon {
+    font-size: 28px;
+    display: inline-block;
+    margin-bottom: 6px;
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+.hero-stat-link:hover .menu-icon {
+    transform: rotate(12deg) scale(1.15);
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+}
+.hero-stat-link:hover {
+    transform: translateY(-6px);
+    transition: transform 0.4s ease;
+}
+
+/* ===== LOADING SCREEN ===== */
+#loading {
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    display:flex; justify-content:center; align-items:center; flex-direction:column;
+    z-index:9999;
+    font-family:'Inter', sans-serif;
+    color:#fff;
+}
+#loading .neural-background,
+#loading .geometric-shapes,
+#loading .neural-lines {
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    z-index:-1;
+}
+#loading .spinner {
+    border:6px solid rgba(255,255,255,0.2);
+    border-top:6px solid #fff;
+    border-radius:50%;
+    width:60px;
+    height:60px;
+    animation:spin 1s linear infinite;
+    margin-bottom:15px;
+}
+#loading p { font-size:18px; opacity:0.8; }
+@keyframes spin { 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);} }
+
+/* ===== HERO MENU ===== */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+.hero-stat {
+    background: rgba(255,255,255,0.08);
+    padding: 18px 22px;
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align:center;
+    min-width:140px;
+    flex: 1 1 180px;
+}
+.hero-stat:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(126,90,255,0.6),0 0 20px rgba(255,99,196,0.6);
+}
+.menu-icon { display:block; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+    .hero-stats { justify-content:center; gap:16px; }
+    .hero-stat { min-width:120px; }
+}
+
+/* ===== DARK/LIGHT MODE ===== */
+body.light-mode { background:#f5f5f5; color:#222; }
+body:not(.light-mode) { background-color: rgba(11,12,23,1); color:#fff; }
+body:not(.light-mode) .flip-card-front { background: rgba(126,90,255,0.6); }
+body:not(.light-mode) .flip-card-back { background: rgba(255,99,196,0.6); }
+.modal-content { background-color: rgba(27,28,42,0.95); }
+
+/* ===== TAMBAHAN : HERO IMAGE ATAS ===== */
+.hero-top-image{
+    display:flex;
+    justify-content:center;
+    margin-bottom:20px;
+}
+.hero-top-image img{
+    width:100%;
+    max-width:260px;
+    animation: float 4s ease-in-out infinite;
+}
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+    <div class="neural-background"></div>
+    <div class="geometric-shapes">
+        <div class="shape"></div><div class="shape"></div><div class="shape"></div><div class="shape"></div>
+    </div>
+    <div class="neural-lines">
+        <div class="neural-line"></div><div class="neural-line"></div><div class="neural-line"></div>
+    </div>
+    <div class="spinner"></div>
+    <p>Initializing Neural Link...</p>
+</div>
+
+<!-- BACKGROUND -->
+<div class="neural-background"></div>
+<div class="geometric-shapes">
+    <div class="shape"></div><div class="shape"></div><div class="shape"></div><div class="shape"></div>
+</div>
+<div class="neural-lines">
+    <div class="neural-line"></div><div class="neural-line"></div><div class="neural-line"></div>
+</div>
+
+<!-- HEADER -->
+<header class="glass">
+    <nav>
+        <a href="#home" class="logo">HALOOO</a>
+        <ul class="nav-links">
+            <li><a href="#features">Neural</a></li>
+            <li><a href="#showcase">Matrix</a></li>
+            <li><a href="#timeline">Evolution</a></li>
+            <li><a href="#contact">Connect</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+
+        <!-- GAMBAR DI ATAS SELAMAT DATANG (TAMBAHAN SAJA) -->
+        <div class="hero-top-image">
+            <img src="hero-image.png" alt="Hero Image">
+        </div>
+
+        <div class="hero-subtitle">SELAMAT DATANG</div>
+        <h1></h1>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <a href="tugas.html" class="hero-stat-link">
+                    <span class="menu-icon">📂</span>
+                    <span class="hero-stat-number">TUGAS</span>
+                    <span class="hero-stat-label">Pengumpulan</span>
+                </a>
+            </div>
+            <div class="hero-stat">
+                <a href="evaluasi.html" class="hero-stat-link">
+                    <span class="menu-icon">📊</span>
+                    <span class="hero-stat-number">EVALUASI & TARGET</span>
+                    <span class="hero-stat-label">Refleksi</span>
+                </a>
+            </div>
+            <div class="hero-stat">
+                <a href="motivasi.html" class="hero-stat-link">
+                    <span class="menu-icon">💡</span>
+                    <span class="hero-stat-number">MOTIVASI</span>
+                    <span class="hero-stat-label">Positive Mindset</span>
+                </a>
+            </div>
+            <div class="hero-stat">
+                <a href="identitas.html" class="hero-stat-link">
+                    <span class="menu-icon">🧬</span>
+                    <span class="hero-stat-number">IDENTITAS</span>
+                    <span class="hero-stat-label">Diriku</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="glass" style="margin-top:60px; padding:20px 30px; text-align:center; backdrop-filter:blur(12px); background:rgba(255,255,255,0.08); border-radius:16px;">
+    <p style="margin-bottom:12px; font-weight:500; color:#fff;">Kontak Saya</p>
+    <p style="margin-top:12px; font-size:12px; color:rgba(255,255,255,0.6);">© 2026 Arez Pratama</p>
+</footer>
+
+<script>
+window.addEventListener('load', function(){
+    const loader = document.getElementById('loading');
+    setTimeout(()=>{
+        loader.style.opacity='0';
+        setTimeout(()=>loader.style.display='none',800);
+    },800);
+});
+</script>
+
+</body>
+</html>
+
+<footer class="glass" style="margin-top:60px; padding:20px 30px; text-align:center; backdrop-filter:blur(12px); background:rgba(255,255,255,0.08); border-radius:16px;">
+    <p style="margin-bottom:12px; font-weight:500; color:#fff;">Kontak Saya</p>
+    <p style="margin-top:12px; font-size:12px; color:rgba(255,255,255,0.6);">© 2026 Arez Pratama</p>
+</footer>
+
+<script>
+window.addEventListener('load', function(){
+    const loader = document.getElementById('loading');
+    setTimeout(()=>{
+        loader.style.opacity='0';
+        setTimeout(()=>loader.style.display='none',800);
+    },800);
+});
+</script>
+
+</body>
+</html>

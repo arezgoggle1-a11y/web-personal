@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluasi & Target</title>
+
+    <link href="templatemo-neural-style.css" rel="stylesheet">
+
+    <style>
+        .accordion {
+            margin-top: 30px;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .accordion-header h2 {
+            margin: 0;
+        }
+
+        .accordion-icon {
+            font-size: 26px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            margin-top: 15px;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .rotate {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="neural-background"></div>
+
+    <div class="geometric-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="neural-lines">
+        <div class="neural-line"></div>
+        <div class="neural-line"></div>
+        <div class="neural-line"></div>
+    </div>
+
+    <!-- Content -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>EVALUASI & TARGET</h1>
+
+            <!-- ACCORDION EVALUASI -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>EVALUASI</h2>
+                    <span class="accordion-icon">&gt;</span>
+                </div>
+
+                <div class="accordion-content">
+                    <ol>
+                        <li>Masih kurang paham dalam beberapa materi</li>
+                        <li>Terkadang suka menunda mengerjakan tugas KIK</li>
+                        <li>Kurang berani untuk bertanya saat ada materi yang belum paham</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ACCORDION TARGET -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>TARGET</h2>
+                    <span class="accordion-icon">&gt;</span>
+                </div>
+
+                <div class="accordion-content">
+                    <ol>
+                        <li>Mendapatkan nilai yang lebih baik daripada nilai sebelumnya </li>
+                        <li>Dapat memahami materi yang disampaikan</li>
+                        <li>Dapat mengerjakan tugas yang diberikan tepat waktu</li>
+                    </ol>
+                </div>
+            </div>
+
+            <br>
+
+            <a href="index.html" class="cta-button">← Kembali ke Home</a>
+        </div>
+    </section>
+
+    <!-- SCRIPT -->
+    <script>
+        document.querySelectorAll('.accordion').forEach(accordion => {
+            const header = accordion.querySelector('.accordion-header');
+            const content = accordion.querySelector('.accordion-content');
+            const icon = accordion.querySelector('.accordion-icon');
+
+            header.addEventListener('click', () => {
+                content.classList.toggle('active');
+                icon.classList.toggle('rotate');
+
+                if (content.classList.contains('active')) {
+                    icon.innerHTML = "&lt;";
+                } else {
+                    icon.innerHTML = "&gt;";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
